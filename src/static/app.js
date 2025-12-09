@@ -595,10 +595,10 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
       <div class="share-buttons">
         <span class="share-label">Share:</span>
-        <button class="share-button facebook" data-activity="${escapeHtml(name)}" data-description="${escapeHtml(details.description)}" data-platform="facebook" title="Share on Facebook">f</button>
-        <button class="share-button twitter" data-activity="${escapeHtml(name)}" data-description="${escapeHtml(details.description)}" data-platform="twitter" title="Share on Twitter">𝕏</button>
-        <button class="share-button linkedin" data-activity="${escapeHtml(name)}" data-description="${escapeHtml(details.description)}" data-platform="linkedin" title="Share on LinkedIn">in</button>
-        <button class="share-button email" data-activity="${escapeHtml(name)}" data-description="${escapeHtml(details.description)}" data-platform="email" title="Share via Email">✉</button>
+        <button class="share-button facebook" data-activity="${escapeHtml(name)}" data-description="${escapeHtml(details.description)}" data-platform="facebook" title="Share on Facebook" aria-label="Share on Facebook">f</button>
+        <button class="share-button twitter" data-activity="${escapeHtml(name)}" data-description="${escapeHtml(details.description)}" data-platform="twitter" title="Share on X" aria-label="Share on X">𝕏</button>
+        <button class="share-button linkedin" data-activity="${escapeHtml(name)}" data-description="${escapeHtml(details.description)}" data-platform="linkedin" title="Share on LinkedIn" aria-label="Share on LinkedIn">in</button>
+        <button class="share-button email" data-activity="${escapeHtml(name)}" data-description="${escapeHtml(details.description)}" data-platform="email" title="Share via Email" aria-label="Share via Email">✉</button>
       </div>
       <div class="activity-card-actions">
         ${
@@ -813,7 +813,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const description = button.dataset.description;
     const platform = button.dataset.platform;
     
-    // Create shareable URL and text (inputs are already sanitized by being from the database)
+    // Create shareable URL and text (data has been escaped via escapeHtml before being stored in data attributes)
     const currentUrl = window.location.href;
     const shareText = `Check out ${activityName} at Mergington High School! ${description}`;
     const encodedText = encodeURIComponent(shareText);
