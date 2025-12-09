@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     arts: { label: "Arts", color: "#f3e5f5", textColor: "#7b1fa2" },
     academic: { label: "Academic", color: "#e3f2fd", textColor: "#1565c0" },
     community: { label: "Community", color: "#fff3e0", textColor: "#e65100" },
-    technology: { label: "Technology", color: "#e8eaf6", textColor: "#3949ab" },
+    technology: { label: "Technology", color: "#e3f2fd", textColor: "#1976d2" },
   };
 
   // State for activities and filters
@@ -472,6 +472,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Helper function to escape HTML for use in attributes
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
   // Function to render a single activity card
   function renderActivityCard(name, details) {
     const activityCard = document.createElement("div");
@@ -552,6 +559,13 @@ document.addEventListener("DOMContentLoaded", () => {
             .join("")}
         </ul>
       </div>
+      <div class="share-buttons">
+        <span class="share-label">Share:</span>
+        <button class="share-button facebook" data-activity="${escapeHtml(name)}" data-description="${escapeHtml(details.description)}" data-platform="facebook" title="Share on Facebook" aria-label="Share on Facebook">f</button>
+        <button class="share-button twitter" data-activity="${escapeHtml(name)}" data-description="${escapeHtml(details.description)}" data-platform="twitter" title="Share on X" aria-label="Share on X">𝕏</button>
+        <button class="share-button linkedin" data-activity="${escapeHtml(name)}" data-description="${escapeHtml(details.description)}" data-platform="linkedin" title="Share on LinkedIn" aria-label="Share on LinkedIn">in</button>
+        <button class="share-button email" data-activity="${escapeHtml(name)}" data-description="${escapeHtml(details.description)}" data-platform="email" title="Share via Email" aria-label="Share via Email">✉</button>
+      </div>
       <div class="activity-card-actions">
         ${
           currentUser
@@ -575,6 +589,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const deleteButtons = activityCard.querySelectorAll(".delete-participant");
     deleteButtons.forEach((button) => {
       button.addEventListener("click", handleUnregister);
+    });
+
+    // Add click handlers for share buttons
+    const shareButtons = activityCard.querySelectorAll(".share-button");
+    shareButtons.forEach((button) => {
+      button.addEventListener("click", handleShare);
     });
 
     // Add click handler for register button (only when authenticated)
@@ -750,6 +770,42 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 300);
       }
     });
+  }
+
+  // Handle social sharing
+  function handleShare(event) {
+    const button = event.currentTarget;
+    const activityName = button.dataset.activity;
+    const description = button.dataset.description;
+    const platform = button.dataset.platform;
+    
+    // Create shareable URL and text (data has been escaped via escapeHtml before being stored in data attributes)
+    const currentUrl = window.location.href;
+    const shareText = `Check out ${activityName} at Mergington High School! ${description}`;
+    const encodedText = encodeURIComponent(shareText);
+    const encodedUrl = encodeURIComponent(currentUrl);
+    
+    let shareUrl = '';
+    
+    switch (platform) {
+      case 'facebook':
+        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+        window.open(shareUrl, '_blank', 'width=600,height=400');
+        break;
+      case 'twitter':
+        shareUrl = `https://x.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`;
+        window.open(shareUrl, '_blank', 'width=600,height=400');
+        break;
+      case 'linkedin':
+        shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
+        window.open(shareUrl, '_blank', 'width=600,height=400');
+        break;
+      case 'email':
+        const subject = encodeURIComponent(`Check out ${activityName} at Mergington High School`);
+        const body = encodeURIComponent(`I wanted to share this activity with you:\n\n${activityName}\n${description}\n\nLearn more: ${currentUrl}`);
+        window.location.href = `mailto:?subject=${subject}&body=${body}`;
+        break;
+    }
   }
 
   // Handle unregistration with confirmation
