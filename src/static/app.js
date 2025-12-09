@@ -472,6 +472,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Helper function to escape HTML for use in attributes
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
   // Function to render a single activity card
   function renderActivityCard(name, details) {
     const activityCard = document.createElement("div");
@@ -554,10 +561,10 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
       <div class="share-buttons">
         <span class="share-label">Share:</span>
-        <button class="share-button facebook" data-activity="${name}" data-description="${details.description}" data-platform="facebook" title="Share on Facebook">f</button>
-        <button class="share-button twitter" data-activity="${name}" data-description="${details.description}" data-platform="twitter" title="Share on Twitter">𝕏</button>
-        <button class="share-button linkedin" data-activity="${name}" data-description="${details.description}" data-platform="linkedin" title="Share on LinkedIn">in</button>
-        <button class="share-button email" data-activity="${name}" data-description="${details.description}" data-platform="email" title="Share via Email">✉</button>
+        <button class="share-button facebook" data-activity="${escapeHtml(name)}" data-description="${escapeHtml(details.description)}" data-platform="facebook" title="Share on Facebook">f</button>
+        <button class="share-button twitter" data-activity="${escapeHtml(name)}" data-description="${escapeHtml(details.description)}" data-platform="twitter" title="Share on Twitter">𝕏</button>
+        <button class="share-button linkedin" data-activity="${escapeHtml(name)}" data-description="${escapeHtml(details.description)}" data-platform="linkedin" title="Share on LinkedIn">in</button>
+        <button class="share-button email" data-activity="${escapeHtml(name)}" data-description="${escapeHtml(details.description)}" data-platform="email" title="Share via Email">✉</button>
       </div>
       <div class="activity-card-actions">
         ${
@@ -772,7 +779,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const description = button.dataset.description;
     const platform = button.dataset.platform;
     
-    // Create shareable URL and text
+    // Create shareable URL and text (inputs are already sanitized by being from the database)
     const currentUrl = window.location.href;
     const shareText = `Check out ${activityName} at Mergington High School! ${description}`;
     const encodedText = encodeURIComponent(shareText);
@@ -786,7 +793,7 @@ document.addEventListener("DOMContentLoaded", () => {
         window.open(shareUrl, '_blank', 'width=600,height=400');
         break;
       case 'twitter':
-        shareUrl = `https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`;
+        shareUrl = `https://x.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`;
         window.open(shareUrl, '_blank', 'width=600,height=400');
         break;
       case 'linkedin':
