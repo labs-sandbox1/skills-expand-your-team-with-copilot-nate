@@ -722,13 +722,13 @@ footer {
 
 #logout-button {
   padding: 3px 10px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: var(--header-button-bg);
   font-size: 0.8rem;
   border-radius: 20px;
 }
 
 #logout-button:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: var(--header-button-bg-hover);
 }
 
 /* Dark mode toggle button */
@@ -736,7 +736,7 @@ footer {
   position: absolute;
   top: 10px;
   right: 15px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: var(--header-button-bg);
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -751,7 +751,7 @@ footer {
 }
 
 #theme-toggle:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: var(--header-button-bg-hover);
   transform: scale(1.1);
 }
 
