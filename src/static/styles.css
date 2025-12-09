@@ -207,15 +207,14 @@ section h3 {
 
 /* Difficulty Badge */
 .difficulty-badge {
-  position: absolute;
-  top: 8px;
-  left: 8px;
+  display: inline-block;
   font-size: 0.65rem;
   font-weight: bold;
   padding: 2px 6px;
   border-radius: 10px;
   text-transform: uppercase;
   letter-spacing: 0.3px;
+  margin-bottom: 8px;
 }
 
 .difficulty-beginner {

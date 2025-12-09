@@ -548,8 +548,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     activityCard.innerHTML = `
       ${tagHtml}
-      ${difficultyBadge}
       <h4>${name}</h4>
+      ${difficultyBadge}
       <p>${details.description}</p>
       <p class="tooltip">
         <strong>Schedule:</strong> ${formattedSchedule}
