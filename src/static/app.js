@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     arts: { label: "Arts", color: "#f3e5f5", textColor: "#7b1fa2" },
     academic: { label: "Academic", color: "#e3f2fd", textColor: "#1565c0" },
     community: { label: "Community", color: "#fff3e0", textColor: "#e65100" },
-    technology: { label: "Technology", color: "#e8eaf6", textColor: "#3949ab" },
+    technology: { label: "Technology", color: "#e3f2fd", textColor: "#1976d2" },
   };
 
   // State for activities and filters
@@ -552,6 +552,13 @@ document.addEventListener("DOMContentLoaded", () => {
             .join("")}
         </ul>
       </div>
+      <div class="share-buttons">
+        <span class="share-label">Share:</span>
+        <button class="share-button facebook" data-activity="${name}" data-description="${details.description}" data-platform="facebook" title="Share on Facebook">f</button>
+        <button class="share-button twitter" data-activity="${name}" data-description="${details.description}" data-platform="twitter" title="Share on Twitter">𝕏</button>
+        <button class="share-button linkedin" data-activity="${name}" data-description="${details.description}" data-platform="linkedin" title="Share on LinkedIn">in</button>
+        <button class="share-button email" data-activity="${name}" data-description="${details.description}" data-platform="email" title="Share via Email">✉</button>
+      </div>
       <div class="activity-card-actions">
         ${
           currentUser
@@ -575,6 +582,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const deleteButtons = activityCard.querySelectorAll(".delete-participant");
     deleteButtons.forEach((button) => {
       button.addEventListener("click", handleUnregister);
+    });
+
+    // Add click handlers for share buttons
+    const shareButtons = activityCard.querySelectorAll(".share-button");
+    shareButtons.forEach((button) => {
+      button.addEventListener("click", handleShare);
     });
 
     // Add click handler for register button (only when authenticated)
@@ -750,6 +763,42 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 300);
       }
     });
+  }
+
+  // Handle social sharing
+  function handleShare(event) {
+    const button = event.currentTarget;
+    const activityName = button.dataset.activity;
+    const description = button.dataset.description;
+    const platform = button.dataset.platform;
+    
+    // Create shareable URL and text
+    const currentUrl = window.location.href;
+    const shareText = `Check out ${activityName} at Mergington High School! ${description}`;
+    const encodedText = encodeURIComponent(shareText);
+    const encodedUrl = encodeURIComponent(currentUrl);
+    
+    let shareUrl = '';
+    
+    switch (platform) {
+      case 'facebook':
+        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+        window.open(shareUrl, '_blank', 'width=600,height=400');
+        break;
+      case 'twitter':
+        shareUrl = `https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`;
+        window.open(shareUrl, '_blank', 'width=600,height=400');
+        break;
+      case 'linkedin':
+        shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
+        window.open(shareUrl, '_blank', 'width=600,height=400');
+        break;
+      case 'email':
+        const subject = encodeURIComponent(`Check out ${activityName} at Mergington High School`);
+        const body = encodeURIComponent(`I wanted to share this activity with you:\n\n${activityName}\n${description}\n\nLearn more: ${currentUrl}`);
+        window.location.href = `mailto:?subject=${subject}&body=${body}`;
+        break;
+    }
   }
 
   // Handle unregistration with confirmation
