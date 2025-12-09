@@ -30,6 +30,48 @@
   --error-light: #ffebee;
   --info: #0c5460;
   --info-light: #d1ecf1;
+
+  /* Header button backgrounds (used for login, logout, theme toggle buttons) */
+  --header-button-bg: rgba(255, 255, 255, 0.2);
+  --header-button-bg-hover: rgba(255, 255, 255, 0.3);
+}
+
+/* Dark mode color palette */
+[data-theme="dark"] {
+  /* Primary colors */
+  --primary: #5c6bc0;
+  --primary-light: #8e99f3;
+  --primary-dark: #26418f;
+  --primary-text: #ffffff;
+
+  /* Secondary colors */
+  --secondary: #ff9800;
+  --secondary-light: #ffc947;
+  --secondary-dark: #c66900;
+  --secondary-text: #000000;
+
+  /* Neutral colors */
+  --background: #121212;
+  --surface: #1e1e1e;
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --border: #333333;
+  --border-light: #2a2a2a;
+  --border-focus: #444444;
+
+  /* Feedback colors */
+  --success: #66bb6a;
+  --success-light: #1b5e20;
+  --warning: #ffa726;
+  --warning-light: #663c00;
+  --error: #ef5350;
+  --error-light: #7f0000;
+  --info: #29b6f6;
+  --info-light: #004d73;
+
+  /* Header button backgrounds (same as light mode for consistency) */
+  --header-button-bg: rgba(255, 255, 255, 0.2);
+  --header-button-bg-hover: rgba(255, 255, 255, 0.3);
 }
 
 * {
@@ -643,11 +685,11 @@ footer {
   }
 }
 
-/* User controls in header */
+/* User controls in header - positioned to the left of theme toggle */
 #user-controls {
   position: absolute;
   top: 10px;
-  right: 15px;
+  right: 65px;
 }
 
 #user-status {
@@ -670,7 +712,7 @@ footer {
   display: flex;
   align-items: center;
   gap: 5px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: var(--header-button-bg);
   border-radius: 20px;
   padding: 4px 12px;
   font-size: 0.85rem;
@@ -678,7 +720,7 @@ footer {
 }
 
 .icon-button:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: var(--header-button-bg-hover);
 }
 
 .user-icon {
@@ -687,13 +729,91 @@ footer {
 
 #logout-button {
   padding: 3px 10px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: var(--header-button-bg);
   font-size: 0.8rem;
   border-radius: 20px;
 }
 
 #logout-button:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: var(--header-button-bg-hover);
+}
+
+/* Dark mode toggle button */
+#theme-toggle {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background-color: var(--header-button-bg);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+  border: none;
+  padding: 0;
+}
+
+#theme-toggle:hover {
+  background-color: var(--header-button-bg-hover);
+  transform: scale(1.1);
+}
+
+/* Social Share Buttons */
+.share-buttons {
+  display: flex;
+  gap: 5px;
+  margin-top: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.share-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
+  font-size: 0.75rem;
+  border: none;
+  padding: 0;
+}
+
+.share-button:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+.share-button.facebook {
+  background-color: #1877f2;
+  color: white;
+}
+
+.share-button.twitter {
+  background-color: #1da1f2;
+  color: white;
+}
+
+.share-button.linkedin {
+  background-color: #0a66c2;
+  color: white;
+}
+
+.share-button.email {
+  background-color: #6c757d;
+  color: white;
+}
+
+.share-label {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  margin-right: 5px;
 }
 
 /* Social Share Buttons */
