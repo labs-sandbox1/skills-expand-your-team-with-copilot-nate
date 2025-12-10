@@ -650,6 +650,72 @@ footer {
   width: 100%;
 }
 
+/* View mode toggle */
+.view-mode-toggle {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.view-mode-button {
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: all 0.2s ease;
+  flex: 1;
+  min-width: 120px;
+}
+
+.view-mode-button.active {
+  background-color: var(--primary);
+  color: white;
+  border-color: var(--primary-dark);
+}
+
+.view-mode-button:hover {
+  background-color: var(--primary-light);
+  color: white;
+}
+
+/* Grouped activities layout */
+.activity-group {
+  margin-bottom: 20px;
+}
+
+.activity-group-header {
+  background-color: var(--surface);
+  border-left: 4px solid var(--primary);
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.activity-group-header h3 {
+  margin: 0;
+  color: var(--primary);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.activity-group-count {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: normal;
+}
+
+.activity-group-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+
 .reset-button {
   background-color: var(--border);
   color: var(--text-primary);
