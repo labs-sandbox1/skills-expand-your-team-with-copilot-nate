@@ -1,0 +1,100 @@
+name: 🎨 UI/Design Change
+description: Request changes to colors, layout, styling, or visual appearance
+title: "[Design]: "
+labels: ["design", "enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to request changes to the website's appearance, colors, layout, or styling.
+        
+  - type: textarea
+    id: design-change
+    attributes:
+      label: What design change would you like?
+      description: Describe what you want to change about the website's appearance.
+      placeholder: "Example: Change the header color to match our school colors (white and lime green)."
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: design-area
+    attributes:
+      label: Which part of the website needs the change?
+      description: Select all areas that apply
+      multiple: true
+      options:
+        - Header/top of page
+        - Activity cards
+        - Buttons
+        - Background colors
+        - Text colors or fonts
+        - Sidebar/filters
+        - Overall layout
+        - Spacing/margins
+        - Images or icons
+        - Dark mode colors
+        - Other
+    validations:
+      required: true
+      
+  - type: textarea
+    id: current-problem
+    attributes:
+      label: What's wrong with the current design?
+      description: Why does this need to change? What problem does it solve?
+      placeholder: "Example: The current blue theme doesn't match our school branding. Students don't recognize it as our school's website."
+    validations:
+      required: true
+      
+  - type: input
+    id: school-colors
+    attributes:
+      label: School Colors (if relevant)
+      description: What are our school colors that should be used?
+      placeholder: "Example: White and lime green (or #FFFFFF and #32CD32)"
+    validations:
+      required: false
+      
+  - type: textarea
+    id: design-details
+    attributes:
+      label: Design Details
+      description: Provide specific details about colors, sizes, positions, or styles you want.
+      placeholder: |
+        Example:
+        - Header background should be lime green
+        - Header text should be white
+        - Activity cards should have a thin lime green border
+        - Add the school mascot image to the header
+    validations:
+      required: false
+      
+  - type: textarea
+    id: reference-images
+    attributes:
+      label: Examples or References
+      description: Do you have links to examples or images of what you want? Describe any reference materials.
+      placeholder: "Example: See the school's main website at www.example.com for official colors and branding."
+    validations:
+      required: false
+      
+  - type: dropdown
+    id: affects-accessibility
+    attributes:
+      label: Should this work in both light and dark mode?
+      options:
+        - Yes, update both modes
+        - Only light mode
+        - Only dark mode
+        - Not sure
+    validations:
+      required: false
+      
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Information
+      description: Any other design requirements or preferences?
+    validations:
+      required: false

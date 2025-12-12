@@ -1,0 +1,105 @@
+name: 📝 Content Update
+description: Fix text, update wording, or correct information on the website
+title: "[Content]: "
+labels: ["documentation", "content"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to request text changes, corrections, or updates to written content.
+        
+  - type: dropdown
+    id: content-type
+    attributes:
+      label: What type of content needs updating?
+      multiple: true
+      options:
+        - Activity description
+        - Page title or heading
+        - Instructions or help text
+        - Error messages
+        - Button labels
+        - Documentation
+        - School information
+        - Other text
+    validations:
+      required: true
+      
+  - type: textarea
+    id: current-content
+    attributes:
+      label: Current Content
+      description: What does it say now? Copy the text that needs to be changed.
+      placeholder: "Example: 'Mergington High School - Extracurricular Activities'"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: new-content
+    attributes:
+      label: New Content
+      description: What should it say instead? Provide the corrected or updated text.
+      placeholder: "Example: 'Mergington High School - Branch out and grow - Extracurricular Activities'"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: reason-for-change
+    attributes:
+      label: Why does this need to change?
+      description: Explain the reason for the update.
+      placeholder: |
+        Example:
+        - Spelling error
+        - Information is outdated
+        - Wording is confusing to students
+        - Need to add school motto
+        - Incorrect contact information
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: location
+    attributes:
+      label: Where on the website is this content?
+      multiple: true
+      options:
+        - Home page header
+        - Activity card
+        - Sidebar
+        - Footer
+        - Login page
+        - Documentation
+        - Multiple places
+        - Not sure
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: How urgent is this change?
+      options:
+        - Low - Nice to have
+        - Medium - Should be fixed soon
+        - High - Incorrect information that needs fixing
+        - Critical - Urgent correction needed
+    validations:
+      required: true
+      
+  - type: textarea
+    id: additional-changes
+    attributes:
+      label: Are there other related text changes?
+      description: List any other text that should be updated at the same time.
+      placeholder: "Example: Also update the footer to include the school phone number: (555) 123-4567"
+    validations:
+      required: false
+      
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Information
+      description: Any other details or context about this content update?
+    validations:
+      required: false

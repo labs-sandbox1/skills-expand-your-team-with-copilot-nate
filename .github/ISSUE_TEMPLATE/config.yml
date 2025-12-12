@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 Ask a Question
+    url: https://github.com/labs-sandbox1/skills-expand-your-team-with-copilot-nate/discussions
+    about: Have a question? Start a discussion instead of opening an issue.
+  - name: 📚 Development Guide
+    url: https://github.com/labs-sandbox1/skills-expand-your-team-with-copilot-nate/blob/main/docs/how-to-develop.md
+    about: Learn how to set up and develop the application locally.

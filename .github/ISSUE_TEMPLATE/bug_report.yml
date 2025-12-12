@@ -1,0 +1,80 @@
+name: 🐛 Bug Report
+description: Report something that isn't working correctly on the website
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please fill out the information below to help us understand and fix the issue.
+        
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What's not working?
+      description: Describe what's broken or not working as expected. Be as specific as possible.
+      placeholder: "Example: When I click the 'Sign Up' button on the Chess Club activity, nothing happens."
+    validations:
+      required: true
+      
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: What should happen instead?
+      description: Describe what you expected to happen.
+      placeholder: "Example: The student should be added to the activity and the participant count should increase."
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: where-is-bug
+    attributes:
+      label: Where is the problem?
+      description: Which part of the website has the bug?
+      multiple: true
+      options:
+        - Activity cards (the boxes showing each activity)
+        - Sign up button
+        - Filter or search features
+        - Login/Logout
+        - Dark mode toggle
+        - Activity list not loading
+        - Wrong information displayed
+        - Page layout or spacing
+        - Other
+    validations:
+      required: true
+      
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to reproduce the bug
+      description: List the steps someone can follow to see the bug happen.
+      placeholder: |
+        1. Go to the activities page
+        2. Click on '...'
+        3. See error
+    validations:
+      required: false
+      
+  - type: dropdown
+    id: when-noticed
+    attributes:
+      label: When did you first notice this?
+      options:
+        - Just now
+        - Today
+        - This week
+        - Been happening for a while
+        - Not sure
+    validations:
+      required: false
+      
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional information
+      description: Add any other information, screenshots, or context about the problem here.
+      placeholder: "Example: This only happens on certain activities, or only happens for some students."
+    validations:
+      required: false
