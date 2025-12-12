@@ -1,0 +1,84 @@
+name: ✨ Feature Request
+description: Suggest a new feature or enhancement for the website
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        🏴‍☠️ Thanks for suggesting a new feature! Please provide as much detail as possible.
+        
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: What feature would you like to add?
+      description: Describe the new feature or enhancement in detail.
+      placeholder: "Example: Add a calendar view so students can see activities by day and time in a weekly calendar format."
+    validations:
+      required: true
+      
+  - type: textarea
+    id: problem-solving
+    attributes:
+      label: What problem does this solve?
+      description: Explain why this feature would be helpful. What need does it address?
+      placeholder: "Example: Students have trouble seeing which activities overlap with each other. A calendar view would make scheduling conflicts obvious."
+    validations:
+      required: true
+      
+  - type: textarea
+    id: how-it-works
+    attributes:
+      label: How should it work?
+      description: Describe how you envision this feature working. What should students/teachers be able to do?
+      placeholder: |
+        Example:
+        - Add a toggle button at the top to switch between card view and calendar view
+        - Show a weekly calendar (Sunday to Saturday)
+        - Activities appear at their scheduled times
+        - Students can still sign up from the calendar view
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: who-benefits
+    attributes:
+      label: Who would benefit from this feature?
+      description: Who would use this feature most?
+      multiple: true
+      options:
+        - Students browsing activities
+        - Students signing up for activities
+        - Teachers managing activities
+        - Everyone
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: priority
+    attributes:
+      label: How important is this feature?
+      options:
+        - Nice to have
+        - Would be helpful
+        - Very important
+        - Critical for our needs
+    validations:
+      required: true
+      
+  - type: textarea
+    id: examples
+    attributes:
+      label: Examples or references
+      description: Do you have examples of this feature from other websites or applications?
+      placeholder: "Example: Google Calendar shows events in a weekly grid view, which is similar to what we want."
+    validations:
+      required: false
+      
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional information
+      description: Any other details, drawings, or ideas you want to share?
+    validations:
+      required: false

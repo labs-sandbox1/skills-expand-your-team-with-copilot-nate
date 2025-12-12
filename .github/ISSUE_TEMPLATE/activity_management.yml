@@ -1,0 +1,132 @@
+name: 📅 Activity Management
+description: Add a new activity or modify an existing activity
+title: "[Activity]: "
+labels: ["activity-data"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to add a new extracurricular activity or modify an existing one.
+        
+  - type: dropdown
+    id: action-type
+    attributes:
+      label: What do you want to do?
+      options:
+        - Add a new activity
+        - Modify an existing activity
+        - Remove an activity
+    validations:
+      required: true
+      
+  - type: input
+    id: activity-name
+    attributes:
+      label: Activity Name
+      description: The name of the activity (for new activities) or the current name (for modifications).
+      placeholder: "Example: Robotics Club"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: activity-description
+    attributes:
+      label: Activity Description
+      description: What does this activity involve? What will students do?
+      placeholder: "Example: Build and program robots for regional competitions. Learn engineering and coding skills."
+    validations:
+      required: false
+      
+  - type: dropdown
+    id: activity-days
+    attributes:
+      label: Which days does this activity meet?
+      description: Select all days that apply
+      multiple: true
+      options:
+        - Monday
+        - Tuesday
+        - Wednesday
+        - Thursday
+        - Friday
+        - Saturday
+        - Sunday
+    validations:
+      required: false
+      
+  - type: input
+    id: start-time
+    attributes:
+      label: Start Time
+      description: What time does the activity start?
+      placeholder: "Example: 3:30 PM or 15:30"
+    validations:
+      required: false
+      
+  - type: input
+    id: end-time
+    attributes:
+      label: End Time
+      description: What time does the activity end?
+      placeholder: "Example: 5:00 PM or 17:00"
+    validations:
+      required: false
+      
+  - type: input
+    id: max-participants
+    attributes:
+      label: Maximum Participants
+      description: How many students can join this activity?
+      placeholder: "Example: 20"
+    validations:
+      required: false
+      
+  - type: dropdown
+    id: difficulty-level
+    attributes:
+      label: Difficulty Level (optional)
+      description: Is this activity for specific skill levels?
+      options:
+        - All levels (no specific difficulty)
+        - Beginner
+        - Intermediate
+        - Advanced
+    validations:
+      required: false
+      
+  - type: dropdown
+    id: activity-category
+    attributes:
+      label: Activity Category
+      description: What type of activity is this?
+      options:
+        - Sports
+        - Arts
+        - Academic
+        - Community Service
+        - Technology
+        - Other
+    validations:
+      required: false
+      
+  - type: textarea
+    id: changes-needed
+    attributes:
+      label: What changes are needed? (for modifications only)
+      description: If modifying an existing activity, describe what needs to change.
+      placeholder: |
+        Example:
+        - Change meeting time from 3:00 PM to 3:30 PM
+        - Update description to mention new equipment
+        - Increase max participants from 15 to 20
+    validations:
+      required: false
+      
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional Information
+      description: Any other details about this activity?
+      placeholder: "Example: This activity requires parental permission form. Led by Mr. Smith."
+    validations:
+      required: false
